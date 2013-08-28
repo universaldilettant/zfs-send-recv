@@ -24,5 +24,5 @@ for dataset in datasets:
      	latest = os.popen("zfs list -t snapshot -o name | grep "+source+"/"+dataset+"@zfs-auto-snap_monthly | tail -1").read()
 	latest=latest.partition('@')[2].strip()
 	command="zfs send -i "+source+"/"+dataset+"@"+last+" "+source+"/"+dataset+"@"+latest+" | zfs recv "+destination+"/"+dataset                 
-     	print command
+     	os.popen(command)
 
