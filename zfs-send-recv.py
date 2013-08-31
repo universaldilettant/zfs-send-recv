@@ -22,7 +22,7 @@ for dataset in datasets:
      	last=os.popen("zfs list -t snapshot -o name | grep "+destination+"/"+dataset+"@zfs-auto-snap_monthly | tail -1").read()                                                   
      	last=last.partition('@')[2].strip()                                                                                                                 
      	latest = os.popen("zfs list -t snapshot -o name | grep "+source+"/"+dataset+"@zfs-auto-snap_monthly | tail -1").read()
-	latest=latest.partition('@')[2].strip()
-	command="zfs send -i "+source+"/"+dataset+"@"+last+" "+source+"/"+dataset+"@"+latest+" | zfs recv "+destination+"/"+dataset                 
+        latest=latest.partition('@')[2].strip()
+        command="zfs send -i "+source+"/"+dataset+"@"+last+" "+source+"/"+dataset+"@"+latest+" | zfs recv "+destination+"/"+dataset                 
      	os.popen(command)
 
